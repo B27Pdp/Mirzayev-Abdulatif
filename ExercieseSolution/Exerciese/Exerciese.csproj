@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Collections\Leetcode\599. Minimum Index Sum of Two Lists\" />
+    <Folder Include="Lesson_Hashtable\Homework\" />
   </ItemGroup>
 
 </Project>
