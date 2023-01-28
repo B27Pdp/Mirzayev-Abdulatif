@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,41 +11,47 @@ namespace Exerciese.Lesson_Tuple_Nullable.Homework.task1
     {
         public static void Run()
         {
-            Person person = new()
+            Person husband = new()
             {
                 Id = 1,
                 Age = 20,
-                Name = "Val",
+                Name = "Man",
             };
 
-            object[] arr = new object[10];
+            Person wife = new()
+            { 
+                Age = 25,
+                Id = 2,
+                Name = "Woman"
+            };
 
-            Random rand = new();
-
-            for (int i = 0; i < 10; i++)
+            Person husband1 = new()
             {
-                arr[i] = rand.Next(10, 45);
-            }
+                Id = 4,
+                Age = 20,
+                Name = "Man1",
+            };
 
-            TripleDictionary<object, Person, Person> test = new();
+            Person wife1 = new()
+            {
+                Age = 25,
+                Id = 3,
+                Name = "Woman1"
+            };
 
-            test.TProp = arr;
 
-            object[] obj = test.OrderBy();
+            TripleDictionary<int, Person, Person> test = new();
+
+
+            test.Add(4, husband, wife);
+            test.Add(7, husband1, wife1);
+            test.Add(3, new Person() { Age = 44, Id = 5, Name = "Ju"}, new Person() { Age = 33, Id = 8, Name = "Hu" });
+
+            var t = test.OrderBy();
+
+            test.GetByIndex(0);
+
             
-            foreach (object obj2 in obj)
-            {
-                Console.Write(obj2 + " ");
-            }
-
-            obj = test.OrderByDesc();
-            Console.WriteLine();
-
-            foreach (object obj2 in obj)
-            {
-                Console.Write(obj2 + " ");
-            }
-
 
         }
     }

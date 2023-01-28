@@ -1,32 +1,69 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Exerciese.Lesson_Tuple_Nullable.Homework.task1
 {
     public class TripleDictionary<T, U, V>
-        where T : class
-        where U : class, IPerson<int> 
+        where T : struct
+        where U : class, IPerson<int>
         where V : Person
     {
-        public T[]? TProp { get; set; }
+        public T TProp { get; set; }
         public U? UProp { get; set; }
         public V? VProp { get; set; }
 
-        public T[] OrderBy()
+        List<TripleDictionary<T, U, V>> list = new();
+
+        public void Add(T t, U u, V v)
         {
-            List<T> t = TProp.ToList();
-            t.Sort();
-            return t.ToArray();
+            list.Add(new TripleDictionary<T, U, V>() { TProp = t, UProp = u, VProp = v });
         }
-        public T[] OrderByDesc()
+
+        public List<TripleDictionary<T, U, V>> OrderBy()
         {
-            return OrderBy().Reverse().ToArray();
+            list.OrderBy(x => x.TProp);
+
+            return list;
         }
+        public List<TripleDictionary<T, U, V>> OrderByDesc()
+        {
+            OrderBy().Reverse();
+
+            return list;
+        }
+
+        public void GetByIndex(int id)
+        {
+            foreach (PropertyDescriptor item in TypeDescriptor.GetProperties(list[id]))
+            {
+                string name = item.Name;
+                foreach(PropertyDescriptor item1 in TypeDescriptor.GetProperties(item))
+                {
+                    object value = item1.GetValue(item);
+                    Console.Write($"{name}: {value}, ");
+                }
+                
+            }
+            Console.WriteLine();
+        }
+
+        //public void GetAll()
+        //{
+
+        //    for (int i = 0; i < list.Count; i++)
+        //    {
+        //        foreach (PropertyDescriptor item in TypeDescriptor.GetProperties(list[i]))
+        //        {
+        //            string name = item.Name;
+        //            foreach (PropertyDescriptor item1 in TypeDescriptor.GetProperties(list[i]))
+        //            {
+        //                var value = item1.GetValue(item);
+        //                Console.Write($"{name}: {value}, ");
+        //            }
+        //            Console.WriteLine();
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //}
 
     }
 }
