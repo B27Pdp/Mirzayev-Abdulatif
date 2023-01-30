@@ -29,7 +29,8 @@ namespace Exerciese.Lesson_Indexer
                     case 2: ListInUse<string> list2 = new(); list2.Run(); break;
                     case 3: ListInUse<double> list3 = new(); list3.Run(); break;
                     case 4: ListInUse<char> list4 = new(); list4.Run(); break;
-                    case 5: ListInUse<object> list5 = new(); list5.Run(); break;
+                    case 5: 
+                    case 6: ListInUse<object> list5 = new(); list5.Run(); break;
                     default: break;
                 }
             }
