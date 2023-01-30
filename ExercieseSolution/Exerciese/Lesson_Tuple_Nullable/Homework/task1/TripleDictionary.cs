@@ -33,17 +33,7 @@ namespace Exerciese.Lesson_Tuple_Nullable.Homework.task1
 
         public void GetByIndex(int id)
         {
-            foreach (PropertyDescriptor item in TypeDescriptor.GetProperties(list[id]))
-            {
-                string name = item.Name;
-                foreach(PropertyDescriptor item1 in TypeDescriptor.GetProperties(item))
-                {
-                    object value = item1.GetValue(item);
-                    Console.Write($"{name}: {value}, ");
-                }
-                
-            }
-            Console.WriteLine();
+            
         }
 
         //public void GetAll()
