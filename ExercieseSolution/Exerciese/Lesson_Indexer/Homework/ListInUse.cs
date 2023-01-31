@@ -104,7 +104,11 @@
         }
         private void ForEach()
         {
-            list.ForEach(x => Console.Write(x + ", "));
+            foreach (T item in list)
+            {
+                Console.Write(item + ", ");
+            }
+            //list.ForEach(x => Console.Write(x + ", "));
             Console.WriteLine();
         }
         private void Pause() { Console.WriteLine($"Press any key to continue..."); Console.ReadKey(); }

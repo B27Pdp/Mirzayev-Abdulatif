@@ -1,9 +1,11 @@
-﻿namespace Exerciese.Lesson_Indexer.Homework
+﻿using System.Collections;
+
+namespace Exerciese.Lesson_Indexer.Homework
 {
-    public class MyGenericList<T>
+    public class MyGenericList<T> : IEnumerable<T>
     {
         T[] array = new T[4];
-        int count = 0;
+        int count = -1;
         object a = -1;
         public T this[int i]
         {
@@ -14,6 +16,7 @@
             }
             set
             {
+                count++;
                 if (i <= count) array[i] = value;
                 else new IndexOutOfRangeException("Unday index mavjud emas");
             }
@@ -36,8 +39,9 @@
         }
         public void Add(T item)
         {
+            count++;
             if (array.Length <= count) grow();
-            array[count++] = item;
+            array[count] = item;
         }
         private void grow()
         {
@@ -48,7 +52,7 @@
         public void Clear()
         {
             array = new T[1];
-            count = 0;
+            count = -1;
         }
         public bool Contains(T item)
         {
@@ -59,12 +63,18 @@
             if (array.Contains(item))
             {
                 int index = Array.IndexOf(array, item);
-                (array[index], array[array.Length - 1]) = (array[array.Length - 1], array[index]);
-
-                T[] arr = new T[array.Length];
-                Array.Copy(array, arr, array.Length - 1);
-                array = arr;
+                for (int i = index; i < count-1; i++)
+                {
+                    
+                    T t = array[i+1];
+                    array[i+1] = array[index];
+                    array[i] = t;
+                }
+                //(array[index], array[count-1]) = (array[count-1], array[index]);
                 count--;
+                T[] arr = new T[count];
+                Array.Copy(array, arr, count);
+                array = arr;
                 return true;
             }
             return false;
@@ -98,6 +108,21 @@
                 return Array.IndexOf(array, item);
             }
             return -1;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return array[i];
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return array[i];
+            }
         }
     }
 }
