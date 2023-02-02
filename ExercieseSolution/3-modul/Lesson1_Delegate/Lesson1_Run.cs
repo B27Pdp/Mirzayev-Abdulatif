@@ -12,9 +12,11 @@ namespace _3_modul.Lesson1_Delegate
     {
         public static void Run()
         {
+            task2 t = new task2();
+            t.Run();
 
-            Mathematics m = new();
-            m.Run();
+            //Mathematics m = new();
+            //m.Run();
 
         }
     }
