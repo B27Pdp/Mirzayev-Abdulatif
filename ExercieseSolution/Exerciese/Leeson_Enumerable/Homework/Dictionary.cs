@@ -10,7 +10,11 @@ namespace Exerciese.Leeson_Enumerable.Homework
     {
         public static void Run()
         {
-            Dictionary<string, string> dictionary = new();
+            Dictionary<string, string> dictionary = new()
+            {
+                {"tepm", "temporary" },
+                {"name", "Jon Doe" }
+            };
             while (true)
             {
                 Console.Write("s: ");
@@ -30,14 +34,14 @@ namespace Exerciese.Leeson_Enumerable.Homework
 
                 if (isHave)
                 {
-                    int i = s.IndexOf('$',endIndex+1)+1;
-                    int j = s.IndexOf('$', i + 1);
+                    string[] str = s.Split('$');
 
-                    Console.WriteLine(i);
-                    Console.WriteLine(j);
-                    string key1 = s.Substring(i, s.Length-i-j);
+                    string key1 = str[3];
 
-                    Console.WriteLine("key1: " + key1);
+                    if(dictionary.ContainsKey(key1))
+                    {
+                        
+                    }
                 }
                 else
                 {
