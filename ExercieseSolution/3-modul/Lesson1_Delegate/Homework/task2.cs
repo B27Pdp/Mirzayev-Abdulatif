@@ -19,9 +19,10 @@ namespace _3_modul.Lesson1_Delegate.Homework
         public void Run()
         {
             MinMaxDelegate del = UseDelegate;
+
             var a = del.Invoke(new List<int>() {5, 68, 22, -64, 33, 48, 24 });
+
             Console.WriteLine($"Max: {a.Item1}\nMin: {a.Item2}");
         }
-
     }
 }
