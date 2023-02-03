@@ -10,7 +10,6 @@
                 Console.WriteLine($"age: {age}\tname: {name}");
             };
             method.Invoke(5, "Hello");
-
         }
     }
 }

@@ -11,7 +11,9 @@ namespace _3_modul.Lesson2_Delegate2
     {
         public static void Run()
         {
-            AnonyMethod.Run();
+            //AnonyMethod.Run();
+            //MyAction.Run();
+            MyFunc.Run();
         }
     }
 }
