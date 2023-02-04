@@ -12,7 +12,10 @@ namespace _3_modul.Lesson2_Delegate2.Classwork
         {
             Func<int, string, Action<string>> myFunction = (birthYear, name) => 
             {
-                Action<string> action = str => { str = name; Console.WriteLine(str + $", {birthYear}"); };
+                Action<string> action = str => 
+                { 
+                    str = name; Console.WriteLine(str + $", {birthYear}"); 
+                };
 
                 return action; 
             };
@@ -23,11 +26,9 @@ namespace _3_modul.Lesson2_Delegate2.Classwork
             Console.WriteLine(func.Invoke());
 
             Action act = Hi;
+
             act();
 
-            //answer.Invoke("hello");
-
-            //Console.WriteLine(answer);
         }
         public static string GetHello()
         {
