@@ -1,4 +1,5 @@
-﻿using _3_modul.Lesson4_Regex.Homework;
+﻿using _3_modul.Lesson4_Regex.Classwork;
+using _3_modul.Lesson4_Regex.Homework;
 using _3_modul.Lesson4_Regex.Homework.Josus;
 using System;
 using System.Collections.Generic;
@@ -13,17 +14,13 @@ namespace _3_modul.Lesson4_Regex
     {
         public static void Run()
         {
-            //RegularExpressions.Run();
-            //Task1.IsValid(new string[] {"Samandar", "Abdulatif", "Salom"});
-            //Task1.IsNumber("df4654asf4df645f465465fd4");
+            Mafia mafia = new Mafia();
+            Shpion shpion = new Shpion();
 
-            Boss boss = new Boss();
-            Agent agent = new Agent();
+            mafia.Order += shpion.ShpionStart;
+            mafia.Run();
 
-            boss.OnClick += agent.GetOrder;
-            agent.AgentReceived += boss.IsFinished;
-            boss.Mission();
-            
+
 
         }
     }
