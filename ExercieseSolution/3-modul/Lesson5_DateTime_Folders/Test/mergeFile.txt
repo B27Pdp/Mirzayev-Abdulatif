@@ -1,9 +1,8 @@
 Hello My name is Jones
-
-I live in Uzbekistan
 Lorem Ipsum is simply dummy text
-My family is on the moon
+I live in Uzbekistan
 of the printing and typesetting industry.
+My family is on the moon
 Lorem Ipsum has been the industry's standard
 dummy text ever since the 1500s, when an unknown
 printer took a galley of type and scrambled it to make

@@ -98,10 +98,25 @@ namespace Person
             bool isValidPassword = Regex.IsMatch(password, "([A-Z]+|[a-z]+|[0-9]+){8,}");
 
             if (!isValidPassword) { Console.WriteLine("Please enter stronger password..."); Console.ReadKey(); return false; }
-            
+
+            DirectoryInfo path1 = new(directoryInfo?.FullName + "\\DataBase");
+            FileInfo[]? data = path1.GetFiles();
+
+            var s = File.ReadAllLines(data[0].FullName.ToString()).ToList()[0];
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (!char.IsNumber(s[i]))
+                {
+                    s = s.Remove(i , 1);
+                    i--;
+                }
+            }
+            int id; int.TryParse(s, out id);
+
             Human human = new()
             {
-                Id = 2,
+                Id = id++,
                 Name = name,
                 Login = login,
                 Password = password
